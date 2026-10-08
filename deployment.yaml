@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+
+kind: Deployment
+
+metadata:
+  name: springboot-k8s-demo
+
+  namespace: jenkins
+
+
+spec:
+
+  replicas: 3
+
+  selector:
+    matchLabels:
+      app: springboot-k8s-demo
+
+  template:
+
+    metadata:
+      labels:
+        app: springboot-k8s-demo
+
+    spec:
+
+      containers:
+
+        - name: springboot-k8s-demo
+
+          image: srirecw9/springboot-k8s-demo
+
+          imagePullPolicy: Always
+
+          ports:
+
+            - containerPort: 8080
